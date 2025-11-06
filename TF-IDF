@@ -1,0 +1,17 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+docs = [
+    "Machine learning is fascinating.",
+    "Natural language processing is a subfield of machine learning.",
+    "Deep learning and neural networks are part of modern AI."
+]
+vectorizer = TfidfVectorizer()
+tfidf_matrix = vectorizer.fit_transform(docs)
+
+import pandas as pd
+
+df = pd.DataFrame(
+    tfidf_matrix.toarray(),
+    columns=vectorizer.get_feature_names_out()
+)
+print(df)
